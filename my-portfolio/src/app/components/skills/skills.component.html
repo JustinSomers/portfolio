@@ -1,0 +1,24 @@
+<div class="col-lg-6">
+  <h3 class="text-center">Experience and Skills</h3>
+  <p>I have experience in <b> 
+    <ng-container *ngFor="let language of Languages; let isLast=last">
+      {{language}}{{isLast ? '' : ', '}}
+  </ng-container></b>
+  </p>
+  <p> I have spent the most time with 
+    <b>
+      <ng-container *ngFor="let language of BestLanguages; let isLast=last">
+        {{language}}{{isLast ? '' : ', '}}
+      </ng-container>
+    </b>
+  </p>
+  <p>
+    I have also used 
+    <b>
+        <ng-container *ngFor="let tech of Technologies; let isLast=last">
+            {{tech}}{{isLast ? '' : ', '}}
+          </ng-container>
+    </b>
+  </p>
+
+</div>
