@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  profileImg: string;
+
+  constructor() {
+    this.profileImg = '../../../assets/imgs/trumpet.jpg';
+   }
 
   ngOnInit() {
   }

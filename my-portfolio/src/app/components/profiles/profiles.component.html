@@ -4,8 +4,8 @@
     <ul>
       <li class="list-unstyled">
           <a [href]="profile.profileLink">
-              <i [ngClass]="profile.symbol"></i>
-              {{profile.profileName}}
+              <span [ngClass]="profile.symbol" class="profile-icon"></span>
+              <span>{{profile.profileName}}</span>
             </a>
       </li>
     </ul>
