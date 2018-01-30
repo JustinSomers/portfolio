@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { FunComponent } from './components/fun/fun.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
+import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ProfilesComponent } from './components/profiles/profiles.component';
     AboutComponent,
     FunComponent,
     SkillsComponent,
-    ProfilesComponent
+    ProfilesComponent,
+    JumbotronComponent
   ],
   imports: [
     FormsModule,

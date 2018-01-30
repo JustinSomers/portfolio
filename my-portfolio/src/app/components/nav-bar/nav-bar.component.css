@@ -8,13 +8,23 @@
         float: none;
     }
 }
-*{
+
+.navbar-custom {
+    background-color:rgb(85, 85, 85);
+}
+a{
     font-family: 'Libre Baskerville', serif;
 }
+
 .navbar-brand {
-    font-size: 2em;
+    font-size: 1.3em;
 }
 
 ul > li > a {
-    font-size: 1.3em;
+   
+}
+
+a, u {
+    text-decoration: none;
+    color: white;
 }

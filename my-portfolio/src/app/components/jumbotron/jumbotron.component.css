@@ -1,0 +1,12 @@
+.profile-image {
+    width: 10%;
+    margin: 30px;
+  }
+  
+  .container-fluid {
+    background-color: rgb(241, 241, 241);
+}
+
+body{
+    font-family: 'Libre Baskerville', serif;
+}
