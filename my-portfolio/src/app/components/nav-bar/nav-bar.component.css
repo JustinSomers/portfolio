@@ -8,3 +8,13 @@
         float: none;
     }
 }
+*{
+    font-family: 'Libre Baskerville', serif;
+}
+.navbar-brand {
+    font-size: 2em;
+}
+
+ul > li > a {
+    font-size: 1.3em;
+}

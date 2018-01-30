@@ -1,0 +1,19 @@
+*{
+    font-family: 'Libre Baskerville', serif;
+}
+
+
+.image-cropper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+.profile-image {
+    width: 15%;
+  }

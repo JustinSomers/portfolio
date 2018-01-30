@@ -16,12 +16,13 @@ p {
 }
 
 .profile-img {
-    width: 80%
+    width: 80%;
+    padding: 20px;
+    background: rgb(235, 235, 235);
+
 }
 
 .profile-image-box {
-    background: rgb(235, 235, 235);
-
 }
 
 .about-block {
@@ -35,4 +36,8 @@ p {
 .row.match-my-cols [class*="col-"]{
     margin-bottom: -99999px;
     padding-bottom: 99999px;
+}
+
+*{
+    font-family: 'Libre Baskerville', serif;
 }
