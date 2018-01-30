@@ -25,7 +25,7 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
     FunComponent,
     SkillsComponent,
     ProfilesComponent,
-    JumbotronComponent
+    JumbotronComponent,
   ],
   imports: [
     FormsModule,

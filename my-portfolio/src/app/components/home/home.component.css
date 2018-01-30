@@ -1,7 +1,9 @@
-*{
+.reg-text {
+    color: #cd5360;
     font-family: 'Libre Baskerville', serif;
+    font-size: 0.8em;
+    margin-top: 15px;
 }
-
 
 .image-cropper {
     width: 100px;
@@ -13,4 +15,8 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
+}
+
+.container-fluid {
+    background-color: rgba(228, 228, 228, 0.411);
 }

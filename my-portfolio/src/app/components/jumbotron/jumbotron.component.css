@@ -4,9 +4,25 @@
   }
   
   .container-fluid {
-    background-color: rgb(241, 241, 241);
+    background-color: white;
 }
 
 body{
+    
+}
+
+.wrapper * {
+
+}
+
+
+h1 {
+    color: #b37d4e;
+}
+
+p {
+    color: #968373a9;
+}
+.jumbotron-content > * {
     font-family: 'Libre Baskerville', serif;
 }
