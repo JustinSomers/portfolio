@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'customTheme';
+@import 'staticTheme';
+
+.date {
+    font-family: $headings-font-family;
+}
+
+.text-gray {
+    color: lightgray;
+}

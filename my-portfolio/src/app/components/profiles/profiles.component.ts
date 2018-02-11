@@ -4,7 +4,7 @@ import { IProfile } from '../../models/profile.model';
 @Component({
   selector: 'app-profiles',
   templateUrl: './profiles.component.html',
-  styleUrls: ['./profiles.component.css']
+  styleUrls: ['./profiles.component.scss']
 })
 export class ProfilesComponent implements OnInit {
 
