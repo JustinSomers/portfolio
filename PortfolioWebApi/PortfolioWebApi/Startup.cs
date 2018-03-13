@@ -4,37 +4,79 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using PortfolioWebApi.Models;
-using Microsoft.EntityFrameworkCore;
+using PortfolioWebApi.Persistence;
+using System.Data.Common;
+using System.Data.SqlClient;
 
-namespace PortfolioWebApi
+namespace vega
 {
     public class Startup
     {
-        public static string ConnectionSTring { get; private set; }
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+                Configuration = builder.Build();
+        }
+
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.Configure<AWSConfig>(Program.Configuration.GetSection("AWS_Strings"));
-            services.AddSingleton<IConfiguration>(Configuration);
-            services.AddSingleton(Program.Configuration.GetSection("AWS_Strings").Get<AWS_Strings>());
-            //services.AddTransient<AWSConnections>();
-            services.AddDbContext<ArticleContext>(opt => opt.UseSqlServer(Configuration.GetSection("ConnectionStrings").GetValue<string>("DefaultConnection")));
+            verifyConnectionString();
+           
+            // services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
+            services.AddDbContext<ArticleDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();
+           // services.AddTransient<IRepository, Repository>();
         }
 
-        public void Configure(IApplicationBuilder app)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseMvc();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
+                });
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
+            app.UseStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
+            });
+        }
+
+        private void verifyConnectionString()
+        {
+            DbConnectionStringBuilder csb = new DbConnectionStringBuilder();
+            csb.ConnectionString = Configuration.GetConnectionString("Default");// throws
+            using (SqlConnection conn = new SqlConnection(csb.ConnectionString))
+            {
+                conn.Open(); // throws if invalid
+            }
         }
     }
 }

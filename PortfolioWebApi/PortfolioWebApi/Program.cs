@@ -8,17 +8,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace PortfolioWebApi
+namespace vega
 {
     public class Program
     {
-        public static IConfiguration Configuration { get; set; }
         public static void Main(string[] args)
         {
-            var builder = new ConfigurationBuilder()
-              .SetBasePath(Directory.GetCurrentDirectory())
-              .AddJsonFile("appsettings.json");
-            Configuration = builder.Build();
             BuildWebHost(args).Run();
         }
 
