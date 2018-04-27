@@ -2,13 +2,20 @@
 @import 'customTheme';
 @import 'staticTheme';
 
+.text-gray {
+    color: lightgray;
+}
 
-
-.btn {
-    margin-bottom: 20px;
+img {
+    padding: 5px;
 }
 
 .container-fluid {
+    background-color: $background-color;
+    height: 100%;
+}
+
+body {
     background-color: $background-color;
     height: 100%;
 }

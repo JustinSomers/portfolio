@@ -1,3 +1,4 @@
+import { BlogServiceService } from './services/blog-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,7 @@ import { ProfilesComponent } from './components/profiles/profiles.component';
 import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog/blog-article/blog-article.component';
+import { Cpre394Component } from './components/cpre394/cpre394.component';
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { BlogArticleComponent } from './components/blog/blog-article/blog-articl
     JumbotronComponent,
     BlogComponent,
     BlogArticleComponent,
+    Cpre394Component,
   ],
   imports: [
     FormsModule,
@@ -37,7 +40,7 @@ import { BlogArticleComponent } from './components/blog/blog-article/blog-articl
     NgbModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ BlogServiceService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

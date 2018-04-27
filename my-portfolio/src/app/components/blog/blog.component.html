@@ -1,26 +1,29 @@
-<div class="py-5">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-12">
+<div class="container-fluid">
+  <div class="py-5">
+    <div class="container">
+      <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="mb-4">Blog</h1>
-        </div>
-        <div class="card text-gray">
-          <div *ngFor="let article of Articles">
-            <app-blog-article [Article]="article"></app-blog-article>
-
-            <!-- <div class="card-header date">{{Date}}</div>
-              <div class="card-body">
-                <h4>{{Title}}</h4>
-                <h6 class="text-muted">{{Subtitle}}</h6>
-                <p class="text-justify" [innerHtml]="Content">
-                </p>
-                <hr> -->
+          <div class="col-md-12">
+            <h1 class="mb-4">Blog</h1>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="md-4">
-                <button class="btn btn-info text-white" (click)="LoadMore()">Load More</button>
+          <div class="card text-gray">
+            <div *ngFor="let article of Articles">
+              <app-blog-article [Article]="article"></app-blog-article>
+
+              <!-- <div class="card-header date">{{Date}}</div>
+                <div class="card-body">
+                  <h4>{{Title}}</h4>
+                  <h6 class="text-muted">{{Subtitle}}</h6>
+                  <p class="text-justify" [innerHtml]="Content">
+                  </p>
+                  <hr> -->
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="md-4">
+                  <button *ngIf="this.Articles.length <= 1" class="btn btn-info text-white" [disabled]="true">Load More</button>
+                  <button *ngIf="this.Articles.length > 1" class="btn btn-info text-white" (click)="LoadMore()">Load More</button>
+                </div>
               </div>
             </div>
           </div>

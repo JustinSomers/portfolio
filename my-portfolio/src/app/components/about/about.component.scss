@@ -1,6 +1,9 @@
 @import 'variables';
 .container-fluid {
     background-color: $background-color;
+    height: 100%;
+    top: 50%;
+    left: 50%;
 }
 
 h1 {
@@ -11,6 +14,10 @@ p {
     font-family: $font-family-base;
 
 }
+
+// body {
+//     background-color: $background-color; 
+// }
 /* .about-text {
     background: rgb(235, 235, 235);
     padding-left: 15px;

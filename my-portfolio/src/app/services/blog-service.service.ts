@@ -9,6 +9,12 @@ export class BlogServiceService {
 
 
   FetchArticle(): IArticle[] {
-
+    return [
+      {
+        Date: new Date().toLocaleDateString(),
+        Title: 'Under Construction',
+        Subtitle: 'By Justin Somers',
+        Content: 'This Blog is currently under construction.  I am currently implementing the back end service to retrieve articles'
+      } as IArticle];
   }
 }
