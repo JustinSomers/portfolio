@@ -10,6 +10,7 @@ import { IArticle } from '../../models/article.model';
 })
 export class BlogComponent implements OnInit {
 
+  Error: String = '';
   Articles: IArticle[] = [];
   constructor(private blogService: BlogServiceService) { }
 
@@ -23,7 +24,11 @@ export class BlogComponent implements OnInit {
   }
 
   private GenerateArticles(numArticles: number): void {
-    this.Articles = this.blogService.FetchArticle();
+    this.blogService.FetchArticles().subscribe( (resp) => {
+      this.Articles = resp;
+    }, (err) => {
+      this.Error = err;
+    });
   }
 
 
