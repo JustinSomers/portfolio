@@ -43,6 +43,47 @@ app.get('/api/articles', (req, res) =>
   res.send(articles);
 })
 
+app.get('/api/getXLatest', (req, res) => {
+
+  let numLatestArticles = parseInt(req.query.numArticles);
+
+  mostRecent = {
+    _id: -1
+  }
+  let results = db.collection('articles').find().sort(mostRecent).toArray( (err, result) => {
+    let topX = result.slice(0, numLatestArticles);
+    res.send(topX);
+  });
+})
+
+app.get('/api/getXOldest', (req, res) => {
+
+  let numLatestArticles = parseInt(req.query.numArticles);
+
+  mostRecent = {
+    _id: 1
+  }
+  let results = db.collection('articles').find().sort(mostRecent).toArray( (err, result) => {
+    let topX = result.slice(0, numLatestArticles);
+    res.send(topX);
+  });
+})
+
+
+app.post('/api/article', (req, res) => {
+  let article = req.body;
+  article.Date = new Date();
+
+  db.collection('articles').save(article, (err, data) => {
+    if ( err ) {
+      next(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+
 app.post('/api/animals', (req, res) => {
   db.collection('animals').save(req.body, (err, resp) => {
     if (err) {
