@@ -33,14 +33,13 @@ app.get('/api/', (req, res) => {
 
 app.get('/api/articles', (req, res) => 
 {
-  let article = {
-    Date: new Date().toDateString(),
-    Title: 'test Article',
-    Subtitle: 'test articles',
-    Content: 'this is a test'
-  }
-  const articles = [article];
-  res.send(articles);
+  db.collection('articles').find().toArray( (err, data) => {
+    if ( err ) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  })
 })
 
 app.get('/api/getXLatest', (req, res) => {
@@ -51,8 +50,10 @@ app.get('/api/getXLatest', (req, res) => {
     _id: -1
   }
   let results = db.collection('articles').find().sort(mostRecent).toArray( (err, result) => {
-    let topX = result.slice(0, numLatestArticles);
-    res.send(topX);
+    if ( err ) { res.send(err); } else {
+      let topX = result.slice(0, numLatestArticles);
+      res.send(topX);
+    }
   });
 })
 
@@ -64,15 +65,39 @@ app.get('/api/getXOldest', (req, res) => {
     _id: 1
   }
   let results = db.collection('articles').find().sort(mostRecent).toArray( (err, result) => {
-    let topX = result.slice(0, numLatestArticles);
-    res.send(topX);
+    if ( err ) {
+      res.send(err);
+    } else {
+      let topX = result.slice(0, numLatestArticles);
+      res.send(topX);
+    }
+    
   });
 })
+
+app.get('/api/articlesFromDate', (req, res) => {
+  let startDate= new Date(req.query.startDate);
+  let endDate = new Date(req.query.endDate);
+
+  db.collection('articles').find({
+    Date: {
+      $gte: startDate,
+      $lt: endDate
+    }
+  }).toArray( (err, result ) => {
+    if ( err ) {
+      res.send(err);
+    } else {
+      let dates = result;
+      res.send(dates);
+    }
+  })
+});
 
 
 app.post('/api/article', (req, res) => {
   let article = req.body;
-  article.Date = new Date();
+  article.Date = new Date().toISOString();
 
   db.collection('articles').save(article, (err, data) => {
     if ( err ) {
