@@ -5,42 +5,16 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (web)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/PortfolioWebApi/PortfolioWebApi/bin/Debug/netcoreapp2.0/PortfolioWebApi.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/PortfolioWebApi/PortfolioWebApi",
-            "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart",
-            "launchBrowser": {
-                "enabled": true,
-                "args": "${auto-detect-url}",
-                "windows": {
-                    "command": "cmd.exe",
-                    "args": "/C start ${auto-detect-url}"
-                },
-                "osx": {
-                    "command": "open"
-                },
-                "linux": {
-                    "command": "xdg-open"
-                }
-            },
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
-            }
+            "type": "node",
+            "request": "attach",
+            "name": "Attach",
+            "port": 9229
         },
         {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
+            "type": "node",
             "request": "attach",
-            "processId": "${command:pickProcess}"
+            "name": "Attach by Process ID",
+            "processId": "${command:PickProcess}"
         }
     ]
 }

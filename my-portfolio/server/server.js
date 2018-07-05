@@ -78,7 +78,7 @@ app.get('/api/getXOldest', (req, res) => {
 app.get('/api/articlesFromDate', (req, res) => {
   let startDate= new Date(req.query.startDate);
   let endDate = new Date(req.query.endDate);
-
+  
   db.collection('articles').find({
     Date: {
       $gte: startDate,
@@ -107,17 +107,6 @@ app.post('/api/article', (req, res) => {
     }
   });
 });
-
-
-app.post('/api/animals', (req, res) => {
-  db.collection('animals').save(req.body, (err, resp) => {
-    if (err) {
-      return console.log(err)
-    }
-    console.log('saved to database', resp.result)
-    return req.body;
-  })
-})
 
 
 
