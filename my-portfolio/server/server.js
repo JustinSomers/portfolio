@@ -15,12 +15,6 @@ MongoClient.connect('mongodb://localhost:27017/animals', (err, client) => {
 
   db = client.db('articles');
 
-  db.collection('animals').find().toArray( (err, result) => {
-    if ( err ) throw err;
-
-    console.log(result);
-  })
-
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
   console.log(`listening on port ${port}`);
