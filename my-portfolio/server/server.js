@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser= require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
+const mongo = require('mongodb');
+const MongoClient = mongo.MongoClient;
 const cors = require('cors');
 const app = express();
 
@@ -9,8 +10,9 @@ let db;
 app.use(bodyParser.json());
 app.use(cors());
 
+let mongoDB = process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio';
 
-MongoClient.connect('mongodb://localhost:27017/animals', (err, client) => {
+MongoClient.connect(mongoDB, (err, client) => {
   if (err) throw err;
 
   db = client.db('articles');
@@ -87,6 +89,25 @@ app.get('/api/articlesFromDate', (req, res) => {
     }
   })
 });
+
+app.get('/api/nextArticle', (req, res ) => {
+  let currentID = new mongo.ObjectID(req.query.currentID);
+
+  db.collection('articles').find(
+    {
+      _id: {
+        $lt: currentID
+      }
+    }).sort({ _id: 1}).limit(1).toArray( ( err, result) => {
+      if ( err ) {
+        res.send(err);
+      } else if (res.length == 0) {
+        res.statusMessage('error');
+      } else {
+        res.send(result[0]);
+      }
+    })
+})
 
 
 app.post('/api/article', (req, res) => {

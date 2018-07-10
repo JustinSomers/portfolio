@@ -19,12 +19,29 @@ export class BlogComponent implements OnInit {
   }
 
   LoadMore(): void {
+    let article: IArticle = {} as IArticle;
+    if ( this.Articles.length > 0 ) {
+      article = this.Articles[this.Articles.length - 1];
+      this.blogService.FetchNextArticle(article._id.toString())
+        .subscribe( (resp) => {
+          if ( resp ) {
+            this.Articles.push(resp);
+          } else {
+            this.Error = 'No More Articles Found';
+          }
+        }, ( err ) => {
+          this.Error = err;
+        });
+    } else {
+      this.blogService.FetchTop5Articles().subscribe( ( resp) => {
+        this.Articles = resp;
+      });
+    }
     console.log('Load More was pressed!');
-    this.GenerateArticles(5);
   }
 
   private GenerateArticles(numArticles: number): void {
-    this.blogService.FetchArticles().subscribe( (resp) => {
+    this.blogService.FetchTop5Articles().subscribe( (resp) => {
       this.Articles = resp;
     }, (err) => {
       this.Error = err;
