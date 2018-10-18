@@ -18,6 +18,9 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog/blog-article/blog-article.component';
 import { Cpre394Component } from './components/cpre394/cpre394.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { SeniorDesignComponent } from './components/senior-design/senior-design.component';
+import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
 
 
 @NgModule({
@@ -33,6 +36,9 @@ import { Cpre394Component } from './components/cpre394/cpre394.component';
     BlogComponent,
     BlogArticleComponent,
     Cpre394Component,
+    ExperienceComponent,
+    SeniorDesignComponent,
+    AdditionalInfoComponent,
   ],
   imports: [
     FormsModule,

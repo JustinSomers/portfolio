@@ -24,11 +24,11 @@ export class BlogComponent implements OnInit {
   }
 
   private GenerateArticles(numArticles: number): void {
-    this.blogService.FetchArticles().subscribe( (resp) => {
-      this.Articles = resp;
-    }, (err) => {
-      this.Error = err;
-    });
+    // this.blogService.FetchArticles().subscribe( (resp) => {
+    //   this.Articles = resp;
+    // }, (err) => {
+    //   this.Error = err;
+    // });
   }
 
 

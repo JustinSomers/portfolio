@@ -10,6 +10,7 @@ import { IProject } from '../../models/project.model';
 export class Cpre394Component implements OnInit {
   projectOne: IProject;
   projectTwo: IProject;
+  projectThree: IProject;
   constructor(private renderer: Renderer2) {
     const color: String = '#1b2021';
     this.renderer.setStyle(document.body, 'background-color', color);
@@ -47,6 +48,27 @@ export class Cpre394Component implements OnInit {
       `,
       Images: [ '/assets/imgs/bandwitdth.PNG', '/assets/imgs/circuit diagram.png',
           '/assets/imgs/circuitImplementation.JPG']
+    } as IProject;
+
+    this.projectThree = {
+      Title: 'Analog Octave Guitar Pedal',
+      Subtitle: 'Project 1 for EE 333',
+      AboutProject: `
+        For this project, each student was tasked with coming up with a custom circuit to design from scratch,
+        and then implement into a working product by designing the PCB, soldering the components together, and testing
+        to verify that the circuit works.  For this project, which is currently in progress, I will design an analog
+        octave effect pedal for a guitar or bass.  When this circuit is engaged, it will either multiply the frequency up an octave,
+        or down the octave.  It will work with a variety of frequencies, from 20Hz, up to 7,500 Hz.
+      `,
+      WhatILearned: `
+        Before this project, I had never designed a PCB, or soldered before.  I took EE 333 because I saw I would learn these things,
+        and they aren't really covered in the curriculum.  Since the start of the class, I have learned how to do through-hole soldering,
+        how to simulate and design a circuit & PCB, and finally how to get it manufactured.  Later on in the semester I will learn how to do
+        surface mount soldering, along with other useful things in the circuit design process.
+        For the circuit design, I learned primarily from the CD4046B datasheet provided by Texas Instruments, along with
+        the 'recommended' textbook for the class: "The Art of Electronics" by Horowitz & Hill.
+      `,
+      Images: []
     } as IProject;
   }
 

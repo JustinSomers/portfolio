@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="py-5">
+    <div class="container my-5">
+      <div class="row mx-auto">
+        <div class="col-md-12 text-light text-center">
+          <h1 class="mb-3">Experience
+            <br>
+          </h1>
+          <div class="card text-gray">
+            <!-- Project One -->
+            <div class="text-gray">
+              <div class="card-body">
+                <h3>{{jobOne.jobName}}</h3>
+                <h4>About the Job</h4>
+                <p>{{jobOne.jobDescriptionParagraph}}</p>
+                <h2>Job Summary</h2>
+                <ul>
+                    <div *ngFor="let description of jobOne.jobDescription">
+                        <li><span>{{description}}</span></li>
+                    </div>
+                </ul>
+                <h4>Skills</h4>
+                <ul>
+                  <div *ngFor="let skill of jobOne.jobSkills">
+                      <li><span>{{skill}}</span></li>
+                  </div>
+              </ul>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <!-- Project Two -->
+        <div class="card text-gray">
+          <div class="text-gray">
+            <div class="card-body">
+              <h3>{{jobTwo.jobName}}</h3>
+              <h4>About the Job</h4>
+              <p>{{jobTwo.jobDescriptionParagraph}}</p>
+              <h2>Job Summary</h2>
+              <ul>
+                  <div *ngFor="let description of jobTwo.jobDescription">
+                      <li><span>{{description}}</span></li>
+                  </div>
+              </ul>
+              <h4>Skills</h4>
+              <ul>
+                <div *ngFor="let skill of jobTwo.jobSkills">
+                    <li><span>{{skill}}</span></li>
+                </div>
+            </ul>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <!-- Job Three -->
+        <div class="card text-gray">
+          <div class="text-gray">
+            <div class="card-body">
+              <h3>{{jobThree.jobName}}</h3>
+              <h4>About the Job</h4>
+              <p>{{jobThree.jobDescriptionParagraph}}</p>
+              <h2>Job Summary</h2>
+              <ul>
+                  <div *ngFor="let description of jobThree.jobDescription">
+                      <li><span>{{description}}</span></li>
+                  </div>
+              </ul>
+              <h4>Skills</h4>
+              <ul>
+                <div *ngFor="let skill of jobThree.jobSkills">
+                    <li><span>{{skill}}</span></li>
+                </div>
+            </ul>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

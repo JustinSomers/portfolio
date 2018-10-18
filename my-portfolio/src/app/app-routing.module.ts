@@ -7,6 +7,9 @@ import { AboutComponent } from './components/about/about.component';
 import { FunComponent } from './components/fun/fun.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { Cpre394Component } from './components/cpre394/cpre394.component';
+import { ExperienceComponent} from './components/experience/experience.component';
+import { SeniorDesignComponent } from './components/senior-design/senior-design.component';
+import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
 
 const routes: Routes = [
   { path: '',
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'projects', component: Cpre394Component},
+  { path: 'experience', component: ExperienceComponent},
+  { path: 'senior-design', component: SeniorDesignComponent},
+  { path: 'additional-info', component: AdditionalInfoComponent },
   { path: 'fun', component: FunComponent }
 ];
 
